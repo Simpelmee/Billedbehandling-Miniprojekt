@@ -5,7 +5,7 @@ import cv2
 def DisplayImage():
     #Replace "King Domino dataset\\Cropped and perspective corrected boards\\1.jpg" with King Domino dataset\\Cropped and perspective corrected boards\\*.jpg
     #To get all images
-    for images in glob.glob("King Domino dataset\\Cropped and perspective corrected boards\\*.jpg"):
+    for images in glob.glob("King Domino dataset\\Cropped and perspective corrected boards\\1.jpg"):
         image = images
 
     picture = cv2.imread(image)
