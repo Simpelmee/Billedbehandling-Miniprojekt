@@ -22,4 +22,5 @@ def GetImage():
     #To get all images
     for images in glob.glob("King Domino dataset\\Cropped and perspective corrected boards\\1.jpg"):
         image = images
+        image = cv2.imread(image)
     return image
