@@ -2,9 +2,7 @@ import cv2
 import numpy as np
 import FindImage
 
-img = FindImage.GetImage()
-
-def FindBlue():
+def FindBlue(img):
     # Convert the image to HSV color space
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     
@@ -18,7 +16,7 @@ def FindBlue():
     # Return the mask for further processing or display
     return mask
 
-def FindYellow():
+def FindYellow(img):
     # Convert the image to HSV color space
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     
@@ -32,7 +30,7 @@ def FindYellow():
     # Return the mask for further processing or display
     return mask
 
-def FindLightGreen():
+def FindLightGreen(img):
     # Convert the image to HSV color space
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     
@@ -46,7 +44,7 @@ def FindLightGreen():
     # Return the mask for further processing or display
     return mask
 
-def FindDarkGreen():
+def FindDarkGreen(img):
     # Convert the image to HSV color space
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     
@@ -60,7 +58,7 @@ def FindDarkGreen():
     # Return the mask for further processing or display
     return mask
 
-def FindBeige():
+def FindBeige(img):
     # Convert the image to HSV color space
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     
@@ -74,7 +72,7 @@ def FindBeige():
     # Return the mask for further processing or display
     return mask
 
-def FindBlack():
+def FindBlack(img):
     # Convert the image to HSV color space
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     
@@ -87,5 +85,3 @@ def FindBlack():
 
     # Return the mask for further processing or display
     return mask
-
-cv2.waitKey(0)
