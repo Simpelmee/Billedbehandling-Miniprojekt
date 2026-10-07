@@ -15,9 +15,8 @@ def FindBlue():
     # Create a mask that captures only the blue color in the image
     mask = cv2.inRange(hsv, lower_blue, upper_blue)
 
-    # Display the original image and the mask
-    cv2.imshow('Original Image', img)
-    cv2.imshow('Blue Mask', mask)
+    # Return the mask for further processing or display
+    return mask
 
 def FindYellow():
     # Convert the image to HSV color space
@@ -30,9 +29,8 @@ def FindYellow():
     # Create a mask that captures only the yellow color in the image
     mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
 
-    # Display the original image and the mask
-    cv2.imshow('Original Image', img)
-    cv2.imshow('Yellow Mask', mask)
+    # Return the mask for further processing or display
+    return mask
 
 def FindLightGreen():
     # Convert the image to HSV color space
@@ -45,9 +43,8 @@ def FindLightGreen():
     # Create a mask that captures only the green color in the image
     mask = cv2.inRange(hsv, lower_green, upper_green)
 
-    # Display the original image and the mask
-    cv2.imshow('Original Image', img)
-    cv2.imshow('Green Mask', mask)
+    # Return the mask for further processing or display
+    return mask
 
 def FindDarkGreen():
     # Convert the image to HSV color space
@@ -60,9 +57,8 @@ def FindDarkGreen():
     # Create a mask that captures only the dark green color in the image
     mask = cv2.inRange(hsv, lower_dark_green, upper_dark_green)
 
-    # Display the original image and the mask
-    cv2.imshow('Original Image', img)
-    cv2.imshow('Dark Green Mask', mask)
+    # Return the mask for further processing or display
+    return mask
 
 def FindBeige():
     # Convert the image to HSV color space
@@ -75,9 +71,8 @@ def FindBeige():
     # Create a mask that captures only the beige color in the image
     mask = cv2.inRange(hsv, lower_beige, upper_beige)
 
-    # Display the original image and the mask
-    cv2.imshow('Original Image', img)
-    cv2.imshow('Beige Mask', mask)
+    # Return the mask for further processing or display
+    return mask
 
 def FindBlack():
     # Convert the image to HSV color space
@@ -90,8 +85,7 @@ def FindBlack():
     # Create a mask that captures only the black color in the image
     mask = cv2.inRange(hsv, lower_black, upper_black)
 
-    # Display the original image and the mask
-    cv2.imshow('Original Image', img)
-    cv2.imshow('Black Mask', mask)
+    # Return the mask for further processing or display
+    return mask
 
 cv2.waitKey(0)
