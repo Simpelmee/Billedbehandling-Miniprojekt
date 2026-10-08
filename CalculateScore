@@ -55,8 +55,11 @@ def TerrainGrid(img):
             terrain_type = SquareType(square)
             # Put the terrain type in the terrain row
             terrain_row.append(terrain_type)
-            # Put the terrain row in the terrain grid
+        # Put the terrain row in the terrain grid
         terrain_grid.append(terrain_row)
 
     return terrain_grid
 
+list = TerrainGrid(img)
+
+print("Terrain Grid:", list)
