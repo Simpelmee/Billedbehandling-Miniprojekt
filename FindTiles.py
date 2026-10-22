@@ -18,9 +18,7 @@ def TileColour(tile_bgr):
             return True
     return False
 
-def FindTiles(imageNumber=1, grid_cols=5, grid_rows=5):
-    image = FindImage.GetImage(1)
-
+def FindTiles(image=FindImage.GetImage(1), grid_cols=5, grid_rows=5):
     if image is None:
         print("Couldnt read")
         return [], None
@@ -50,9 +48,9 @@ def FindTiles(imageNumber=1, grid_cols=5, grid_rows=5):
 
     return tiles,vis
 
-tiles, vis = FindTiles(1)
-print("tiles found:", len(tiles))
+#tiles, vis = FindTiles(1)
+#print("tiles found:", len(tiles))
 
-cv2.imshow("Tile borders", vis)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+#cv2.imshow("Tile borders", vis)
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
