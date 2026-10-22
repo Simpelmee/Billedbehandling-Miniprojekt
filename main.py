@@ -9,7 +9,7 @@ board = [[("empty", 0) for col in range(5)] for row in range(5)]
 y = 0
 x = 0
 
-imageNumber = 16
+imageNumber = 1
 
 img = FindImage.GetImage(imageNumber)
 tiles, _ = FindTiles.FindTiles(img)
