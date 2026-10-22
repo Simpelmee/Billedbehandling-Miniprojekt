@@ -1,42 +1,49 @@
 import cv2
 import numpy as np
+import FindImage
+from FindColours import Find
 
-def detect_tiles(image_path, grid_cols=5, grid_rows=5, std_threshold=11.6):
+def is_tile(tile_bgr):
+    masks = [
+        FindBlue(tile_bgr),
+    ]
 
-    image = cv2.imread('1.jpg', cv2.IMREAD_GRAYSCALE)
+    for mask in masks:
+        if cv2.countNonZero(mask) > 50:
+            return True
+    return False
+
+def FindTiles(imageNumber=1, grid_cols=5, grid_rows=5):
+    image = FindImage.GetImage(1)
 
     if image is None:
         print("Couldnt read miv")
-        exit()
+        return [], None
 
     #size of picture
-    h, w = image.shape
+    h, w = image.shape[:2]
 
-    GRID_COLS = 5
-    GRID_ROWS = 5
-
-    TILE_W = w // GRID_COLS
-    TILE_H = h // GRID_ROWS
+    tile_w = w // grid_cols
+    tile_h = h // grid_rows
 
     #list of found tiles
     tiles = []
 
-    vis = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
+    vis = image.copy()
 
     #loop through all rows
-    for y in range(0,h,TILE_H):
-        #loop through all cols 
-        for x in range(0,w,TILE_W):
+    for row in range(grid_rows):
+            for col in range(grid_cols):
+                x = col * tile_w
+                y = row * tile_h
 
-            #ROI
-            tile = image[y:y+TILE_H, x:x+TILE_W]
+                tile_bgr = image[y:y+tile_h, x:x+tile_w]
 
-            #std measures pixelvalue 
-            if tile.std() < 11.6:
-                continue
+                if not is_tile(tile_bgr):
+                    continue
 
             #the found tiles
-            tiles.append((x,y,TILE_W,TILE_H))
+            tiles.append((x,y,tile_w,tile_h))
 
             cv2.rectangle(vis, (x,y), (x+TILE_W, y+TILE_H), (0,255,0), 2)
 
