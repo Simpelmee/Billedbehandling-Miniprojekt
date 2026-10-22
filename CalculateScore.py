@@ -4,6 +4,7 @@ board = [[("plain", 0), ("water", 0), ("tree", 0), ("tree", 0),("tree", 0)],
          [("plain", 0), ("ground", 1), ("crown", 0), ("tree", 0), ("plain", 0)],
          [("plain", 0), ("ground", 2), ("water", 0), ("plain", 2), ("plain", 1)],
          [("tree", 0), ("water", 1), ("water", 0), ("plain", 1), ("farm", 0)]
+         ] #score: 36 - image 1
 """
 board = [[("farm", 0), ("stone", 0), ("farm", 0), ("space", 2),("stone", 0)],
          [("space", 1), ("stone", 1), ("farm", 0), ("farm", 0), ("tree", 0)],
