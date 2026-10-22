@@ -1,10 +1,12 @@
 #Example of how the board (2D-array), should look like
+
 board = [[("plain", 0), ("water", 0), ("tree", 0), ("tree", 0),("tree", 0)],
          [("plain", 0), ("tree", 0), ("tree", 0), ("tree", 1), ("plain", 0)],
          [("plain", 0), ("ground", 1), ("crown", 0), ("tree", 0), ("plain", 0)],
          [("plain", 0), ("ground", 2), ("water", 0), ("plain", 2), ("plain", 1)],
          [("tree", 0), ("water", 1), ("water", 0), ("plain", 1), ("farm", 0)]
          ] #score: 36 - image 1
+
 """
 board = [[("farm", 0), ("stone", 0), ("farm", 0), ("space", 2),("stone", 0)],
          [("space", 1), ("stone", 1), ("farm", 0), ("farm", 0), ("tree", 0)],
@@ -20,12 +22,14 @@ board =[[("farm", 0), ("farm", 0), ("plain", 0), ("plain", 0),("empty", 0)],
          [("stone", 0), ("stone", 0), ("crown", 0), ("farm", 0), ("water", 1)]
          ] #score: 22 - image 16
 """
-def CheckBurnable(tileType, row, col):
+
+def CheckBurnable(tileType, row, col, board = board):
     """This function is used by CalculateScore(), to find the same type of tiles that are connected to eachother
 
     @param tileType: The type that the tile is, which we use to look for the same type around it
     @param row: Indicating the row in the 2D array, like a matrix so (row, x)
     @param col: Indicating the col in the 2D array, like a matrix so (x, col)
+    @param board: The board which is being looked at
     @returns: A list with the found matches to the given tile type
     """
     burnQueue = []
@@ -58,14 +62,14 @@ def CalculateScore(board = board):
             board[row][col] = ("empty", 0)
             crownScore = crownAmount
             burnList = []
-            burnList.extend(CheckBurnable(tileType, row, col))
+            burnList.extend(CheckBurnable(tileType, row, col, board))
             while len(burnList) > 0:
                 hits = burnList[0]
                 tileType, crownAmount = board[hits[0]][hits[1]]
                 connectedTiles += 1
                 crownScore += crownAmount
                 board[hits[0]][hits[1]] = ("empty", 0)
-                burnList.extend(CheckBurnable(tileType, hits[0], hits[1]))
+                burnList.extend(CheckBurnable(tileType, hits[0], hits[1], board))
                 burnList = list(dict.fromkeys(burnList))
                 burnList.pop(0)
 
