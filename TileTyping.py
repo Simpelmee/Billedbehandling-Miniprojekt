@@ -12,6 +12,7 @@ def SquareType(square):
     dark_green = cv2.countNonZero(FindColour.FindDarkGreen(square))
     beige = cv2.countNonZero(FindColour.FindBeige(square))
     black = cv2.countNonZero(FindColour.FindBlack(square))
+    red = cv2.countNonZero(FindColour.FindRed(square))
 
     # Count the number of pixels in each mask
     colours = {
@@ -20,14 +21,33 @@ def SquareType(square):
         "light_green": light_green,
         "dark_green": dark_green,
         "beige": beige,
-        "black": black
+        "black": black,
+        "red": red
     }
-    # Determine the color with the highest count
+    # Find most common colour
     type = max(colours, key=colours.get)
 
+    # Calculate the total number of pixels in the square
+    total_pixels = square.shape[0] * square.shape[1]
+
+    # Only check beige tiles for startTile
+    if type == "beige":
+
+        #Calculate percentage of each colour in the square
+        red_percentage = red / total_pixels
+        blue_percentage = blue / total_pixels
+        yellow_percentage = yellow / total_pixels
+        dark_green_percentage = dark_green / total_pixels
+
+        # Check if any of those colours are above 15%, if so it is a startTile
+        if red_percentage > 0.15 or blue_percentage > 0.15 or yellow_percentage > 0.15 or dark_green_percentage > 0.15:
+            return "startTile"
+        else:
+            return "beige"
+        
     return type
 
-def TerrainGrid(img):
+# def TerrainGrid(img):
     rows = 5
     cols = 5
 
@@ -60,6 +80,6 @@ def TerrainGrid(img):
 
     return terrain_grid
 
-list = TerrainGrid(img)
+#list = TerrainGrid(img)
 
-print("Terrain Grid:", list)
+#print("Terrain Grid:", list)
