@@ -9,7 +9,7 @@ board = [[("empty", 0) for col in range(5)] for row in range(5)]
 y = 0
 x = 0
 
-imageNumber = 1
+imageNumber = 36
 
 img = FindImage.GetImage(imageNumber)
 tiles, _ = FindTiles.FindTiles(img)
@@ -25,4 +25,4 @@ for row in range(5):
         counter += 1
 #print(board)
 print(CalculateScore.CalculateScore(board))
-#FindCrowns.ShowCrown(img, FindCrowns.FindCrown(img))
+FindCrowns.ShowCrown(img, FindCrowns.FindCrown(img))
